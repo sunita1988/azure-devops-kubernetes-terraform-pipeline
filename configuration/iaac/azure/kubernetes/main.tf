@@ -34,13 +34,29 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
   }
 }
 
-terraform {
-  required_version = ">= 0.12"
-  backend "azurerm" {
+  terraform {
+   required_version = ">= 0.11" 
+    backend "azurerm" {
+     backend "azurerm" {
      storage_account_name="<<storage_account_name>>" #OVERRIDE in TERRAFORM init
      access_key="<<storage_account_key>>" #OVERRIDE in TERRAFORM init
      key="<<env_name.k8s.tfstate>>" #OVERRIDE in TERRAFORM init
      container_name="<<storage_account_container_name>>" #OVERRIDE in TERRAFORM init
-    features{}
-  }
-}
+     features{}
+    }
+ 	}
+   provider "azurerm" {
+     version = "=2.0.0"
+  features {}
+ }
+
+# terraform {
+#   required_version = ">= 0.12"
+#   backend "azurerm" {
+#      storage_account_name="<<storage_account_name>>" #OVERRIDE in TERRAFORM init
+#      access_key="<<storage_account_key>>" #OVERRIDE in TERRAFORM init
+#      key="<<env_name.k8s.tfstate>>" #OVERRIDE in TERRAFORM init
+#      container_name="<<storage_account_container_name>>" #OVERRIDE in TERRAFORM init
+#     features{}
+#   }
+# }
