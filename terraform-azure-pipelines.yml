@@ -10,6 +10,25 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
+- script: echo terraform script!
   displayName: 'Run a terraform script'
+- task: DownloadSecureFile@1
+  name: publickey
+  inputs:
+    secureFile: 'azure_ssh_key.pub'
+
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/onfiguration/iaac/azure/kubernetes'
+    commandOptions: '-var client_id = $(client_id) -var client_secret= $(client_secret) -var ssh_public_key = $(publickey.secureFilePath)'
+    backendType: 'azurerm'
+    backendServiceArm: 'azure-resource-manager'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'devopskubernetes'
+    backendAzureRmResourceGroupLocation: 'westeurope'
+    backendAzureRmStorageAccountName: 'devopskubnetsessunita03052022'
+    backendAzureRmContainerName: 'devopskubnetsessunita03052022container'
+    backendAzureRmKey: 'k8s'
+    allowTelemetryCollection: true
 
