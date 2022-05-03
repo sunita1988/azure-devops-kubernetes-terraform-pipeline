@@ -21,7 +21,6 @@ steps:
   inputs:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-    commandOptions: ''
     backendType: 'azurerm'
     backendServiceArm: 'azure-resource-manager'
     ensureBackend: true
