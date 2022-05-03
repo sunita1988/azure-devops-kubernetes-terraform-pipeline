@@ -27,8 +27,8 @@ steps:
     ensureBackend: true
     backendAzureRmResourceGroupName: 'devopskubernetes'
     backendAzureRmResourceGroupLocation: 'westeurope'
-    backendAzureRmStorageAccountName: 'devopskubnetsessunita03052022'
-    backendAzureRmContainerName: 'devopskubnetsessunita03052022container'
+    backendAzureRmStorageAccountName: 'dopskubnetsesunita0305'
+    backendAzureRmContainerName: 'dopskubnetsesunita0305container'
     backendAzureRmKey: 'k8s'
     allowTelemetryCollection: true
 
