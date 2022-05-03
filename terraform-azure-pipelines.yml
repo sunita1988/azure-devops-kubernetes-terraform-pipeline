@@ -21,7 +21,7 @@ steps:
   inputs:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-    commandOptions: '-var client_secret =$(client_secret)'
+    commandOptions: ''
     backendType: 'azurerm'
     backendServiceArm: 'azure-resource-manager'
     ensureBackend: true
