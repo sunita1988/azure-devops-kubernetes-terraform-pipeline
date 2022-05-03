@@ -35,9 +35,7 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
 }
 
 terraform {
-  required_providers {
-    azurerm = "2.52.0"
-  },
+ required_version = ">= 0.11" 
   backend "azurerm" {
     # storage_account_name="<<storage_account_name>>" #OVERRIDE in TERRAFORM init
     # access_key="<<storage_account_key>>" #OVERRIDE in TERRAFORM init
