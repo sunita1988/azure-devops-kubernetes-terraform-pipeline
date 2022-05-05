@@ -34,7 +34,7 @@ stages:
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'menifest'
+        ArtifactName: 'manifests'
         publishLocation: 'Container'
 - stage: Deploy
   displayName: Deploy image
@@ -48,7 +48,7 @@ stages:
       inputs:
         buildType: 'current'
         downloadType: 'single'
-        artifactName: 'menifest'
+        artifactName: 'manifests'
         itemPattern: '**/*.yaml'
         downloadPath: '$(System.ArtifactsDirectory)'
     - task: KubernetesManifest@0
