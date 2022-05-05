@@ -25,6 +25,12 @@ stages:
     #     command: 'buildAndPush'
     #     Dockerfile: '**/Dockerfile'
     #     tags: '$(tag)'
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: '**/*.yaml'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
@@ -50,5 +56,5 @@ stages:
         action: 'deploy'
         kubernetesServiceConnection: 'azure-kubernetes-connection'
         namespace: 'default'
-        manifests: '$(System.ArtifactsDirectory)/deployment.yaml'
-        containers: 'in28min/currency-exchange-devops:${tag}'
+        manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
+        containers: 'in28min/currency-exchange-devops:$(tag)'
